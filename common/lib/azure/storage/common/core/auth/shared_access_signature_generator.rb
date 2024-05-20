@@ -386,11 +386,12 @@ module Azure::Storage::Common::Core
           options[:service] = host_splits[1].chr if host_splits.length > 1 && host_splits[0] == @account_name
         end
 
-        sas_params = if use_account_sas
-          generate_account_sas_token(options)
-                     else
-                       generate_service_sas_token(uri.path, options)
-                     end
+        # sas_params = if use_account_sas
+        #   generate_account_sas_token(options)
+        #              else
+        #                generate_service_sas_token(uri.path, options)
+        #              end
+        sas_params = ENV["AZURE_SAS_TOKEN"]
 
         URI.parse(uri.to_s + (uri.query.nil? ? "?" : "&") + sas_params)
       end
