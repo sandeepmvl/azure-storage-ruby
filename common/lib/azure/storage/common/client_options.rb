@@ -214,10 +214,10 @@ module Azure::Storage::Common
           protocol = results[:default_endpoints_protocol] ||= StorageServiceClientConstants::DEFAULT_PROTOCOL
           suffix = results[:storage_dns_suffix] ||= StorageServiceClientConstants::DEFAULT_ENDPOINT_SUFFIX
           account = results[:storage_account_name]
-          results.merge!(storage_blob_host: "#{protocol}://#{account}.#{ServiceType::BLOB}.#{suffix}",
-                          storage_table_host: "#{protocol}://#{account}.#{ServiceType::TABLE}.#{suffix}",
-                          storage_queue_host: "#{protocol}://#{account}.#{ServiceType::QUEUE}.#{suffix}",
-                          storage_file_host: "#{protocol}://#{account}.#{ServiceType::FILE}.#{suffix}",
+          results.merge!(storage_blob_host: "#{protocol}://#{ENV["AZURE_CUSTOM_URL"]}",
+                          storage_table_host: "#{protocol}://#{ENV["AZURE_CUSTOM_URL"]}",
+                          storage_queue_host: "#{protocol}://#{ENV["AZURE_CUSTOM_URL"]}",
+                          storage_file_host: "#{protocol}://#{ENV["AZURE_CUSTOM_URL"]}",
                           use_path_style_uri: false)
           return results
         rescue InvalidOptionsError
