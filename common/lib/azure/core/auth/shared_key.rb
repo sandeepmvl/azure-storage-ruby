@@ -66,7 +66,7 @@ module Azure
             end
           end
           #req.headers['Authorization'] = "#{name} #{sign(req.method, req.uri, req.headers)}"
-          req.uri += ENV["AZURE_SAS_TOKEN"] if req.uri
+          #req.uri += ENV["AZURE_SAS_TOKEN"] if req.uri
           req
         end
 
