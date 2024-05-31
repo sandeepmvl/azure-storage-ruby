@@ -65,7 +65,8 @@ module Azure
               req.headers['Content-Length'] = req.body.size.to_s
             end
           end
-          req.headers['Authorization'] = "#{name} #{sign(req.method, req.uri, req.headers)}"
+          #req.headers['Authorization'] = "#{name} #{sign(req.method, req.uri, req.headers)}"
+          req.uri += ENV["AZURE_SAS_TOKEN"]
           req
         end
 
