@@ -96,10 +96,10 @@ module Azure::Storage
 
       headers = {}
       options[:start_range] = 0 if options[:end_range] && (not options[:start_range])
-      if options[:start_range]
-        StorageService.with_header headers, "x-ms-range", "bytes=#{options[:start_range]}-#{options[:end_range]}"
-        StorageService.with_header headers, "x-ms-range-get-content-md5", "true" if options[:get_content_md5]
-      end
+      #if options[:start_range]
+      #  StorageService.with_header headers, "x-ms-range", "bytes=#{options[:start_range]}-#{options[:end_range]}"
+      #  StorageService.with_header headers, "x-ms-range-get-content-md5", "true" if options[:get_content_md5]
+      #end
       add_blob_conditional_headers options, headers
       headers["x-ms-lease-id"] = options[:lease_id] if options[:lease_id]
 
